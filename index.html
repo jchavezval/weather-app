@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--required tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!--bootstrap tag-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
+    <!--css tag-->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <title>Weather App</title>
+</head>
+
+<body>
+    <!--header-->
+    <h1 class="text-center text-light bg-dark">Weather Dashboard</h1>
+    <!--weather container-->
+    <div class="container">
+        <div class="row">
+            <section id="search-container" class="col-12 col-xl-4 px-3 pt-3 pb-xl-3 pr-xl-0">
+        <form id="search-form" class="d-flex flex-column border border-dark rounded p-3 bg-white mb-3">
+          <label class="font-weight-bold" for="search-input">
+            Search by City:
+          </label>
+          <div class="d-flex justify-content-between">
+            <input class="w-100" type="text" id="search-input" placeholder="Enter City Here">
+            <button id="btn-search"><span class="oi oi-magnifying-glass"></span></button>
+          </div>
+        </form>
+        <div>
+            <ul id="search-history" class="list-group border rounded border-dark d-none ui-sortable" style></ul>
+        </div>
+      </section>
+      <section id="weather-container" class="col-12 col-xl-8 p-3 d-none">
+        <article id="today-container" class="row border border-dark rounded p-3 bg-white"></article>
+        <article id="five-day-container" class="border border-dark rounded p-3 mt-3 bg-white scrolling-wrapper">
+            <!-- Dynamically add 5 day forecast data -->
+          
+        </article>
+      </section>
+    <script src="assets/js/homepage.js"></script>
+</body>
+</html>
