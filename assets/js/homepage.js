@@ -1,6 +1,7 @@
 // Global variables
-let apiKey = "95f2e58186a9f0347b641a4e8fc949ad"
-// dom references
+let apiKey = "0a6532d3c83692159c325a2a57098254"
+
+// DOM
 let searchHistoryListEl = document.querySelector("#search-history");
 let searchFormEl = document.querySelector("#search-form");
 let weatherContainerEl = document.querySelector("#weather-container");
@@ -9,16 +10,16 @@ let forecastContainerEl = document.querySelector("#five-day-container");
 let searchArr = [];
 
 // get user searchTerm
-let searchFormHandler = function(event) {
+let searchFormTask = function(event) {
   event.preventDefault();
   let input = document.querySelector("#search-input")
-  let searchTerm = input.value.toLowerCase().trim();
-  fetchCurrentWeather(searchTerm);
+  let searchInput = input.value.toLowerCase().trim();
+  fetchCurrentWeather(searchInput);
   input.value = "";
 }
 
-// click li in search history to fetch weather
-let searchHistoryHandler = function(event) {
+// click city in search history to get weather
+let searchHistoryTask = function(event) {
   if (event.target.hasAttribute("id","delete")) {
     event.target.parentElement.remove();
     searchArr = [];
@@ -38,7 +39,7 @@ let searchHistoryHandler = function(event) {
 
 // get city weather
 let fetchCurrentWeather = function(city) {
-  // if city is null stop
+  // if city is invalid, return
   if(!city) {
     return
   }
@@ -48,14 +49,18 @@ let fetchCurrentWeather = function(city) {
       weatherContainerEl.classList.remove("d-none")
       res.json().then(function(currentWeather) {
         let cityName = currentWeather.name;
-        // create java script date time object from weather api dt (10 dig num)
+
+        // create date time from weather api 
         let dateTime = moment.utc(currentWeather.dt*1000 + currentWeather.timezone*1000);
-        // get temperature kelvin => Fahrenheit
+        
+        // temperature kelvin converted in Fahrenheit
         let tempF = Math.round((currentWeather.main.temp - 273.15)* 9/5 + 32);
         let humidity = currentWeather.main.humidity;
-        // get wind speed => MPH
+
+        // wind speed in MPH
         let windSpeedMph = Math.round(currentWeather.wind.speed * 2.237);
-        // get lon and lat
+        
+        // lon and lat
         let lon = currentWeather.coord.lon;
         let lat = currentWeather.coord.lat;
         let iconCode = currentWeather.weather[0].icon;
@@ -96,7 +101,7 @@ let fiveDayForecast = function(lat, lon) {
         forecastContainerEl.textContent = ""
         let daily = fiveDayObj.daily;
         
-        // CREATE H2 
+        // 5-Day Forecast header 
         let forecastHeaderEl = document.createElement("h2");
         forecastHeaderEl.textContent = "5-Day Forecast: ";
         forecastContainerEl.appendChild(forecastHeaderEl);
@@ -119,6 +124,7 @@ let fiveDayForecast = function(lat, lon) {
           // CREATE CARD
           let cardEl = document.createElement("div");
           cardEl.classList = "card text-dark bg-light";
+          
           // Create card header
           let cardHeaderEl = document.createElement("h3");
           cardHeaderEl.classList = "card-header px-0 text-center";
@@ -128,6 +134,7 @@ let fiveDayForecast = function(lat, lon) {
           let cardBodyEl = document.createElement("div");
           cardBodyEl.classList = "card-body";
           let cardIconEl = document.createElement("img");
+
           // icon
           cardIconEl.classList = "card-img"
           cardIconEl.src = `https://openweathermap.org/img/wn/${iconCode}@2x.png`
@@ -295,7 +302,7 @@ var displayHistory = function() {
 }
 
 // Event Listeners
-searchFormEl.addEventListener("submit", searchFormHandler);
-searchHistoryListEl.addEventListener("click", searchHistoryHandler);
+searchFormEl.addEventListener("submit", searchFormTask);
+searchHistoryListEl.addEventListener("click", searchHistoryTask);
 
 loadHistory();

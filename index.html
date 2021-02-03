@@ -5,40 +5,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!--bootstrap tag-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
-    <!--css tag-->
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <title>Weather App</title>
-</head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Iconic -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" integrity="sha512-UyNhw5RNpQaCai2EdC+Js0QL4RlVmiq41DkmCJsRV3ZxipG2L0HhTqIf/H9Hp8ez2EnFlkBnjRGJU2stW3Lj+w==" crossorigin="anonymous" />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Weather</title>
+    <!-- favicon -->
+    <link rel="shortcut icon" type="image/jpg" href="http://openweathermap.org/img/wn/02d@2x.png"/>
+    <!-- iPhone Home Screen Icon -->
+    <link rel="apple-touch-icon" href="http://openweathermap.org/img/wn/02d@2x.png">
+  </head>
 
 <body>
     <!--header-->
     <h1 class="text-center text-light bg-dark">Weather Dashboard</h1>
+    
     <!--weather container-->
-    <div class="container">
-        <div class="row">
+   
+        <main class="row">
             <section id="search-container" class="col-12 col-xl-4 px-3 pt-3 pb-xl-3 pr-xl-0">
-        <form id="search-form" class="d-flex flex-column border border-dark rounded p-3 bg-white mb-3">
-          <label class="font-weight-bold" for="search-input">
-            Search by City:
-          </label>
-          <div class="d-flex justify-content-between">
-            <input class="w-100" type="text" id="search-input" placeholder="Enter City Here">
-            <button id="btn-search"><span class="oi oi-magnifying-glass"></span></button>
-          </div>
-        </form>
+              <form id="search-form" class="d-flex flex-column border border-dark rounded p-3 bg-white mb-3">
+              <label class="font-weight-bold" for="search-input">
+                    Search by City:
+              </label>
+              <div class="d-flex justify-content-between">
+                <input class="w-100" type="text" id="search-input" placeholder="Enter City Here">
+                <button id="btn-search"><span class="oi oi-magnifying-glass"></span></button>
+              </div>
+              </form>
         <div>
             <ul id="search-history" class="list-group border rounded border-dark d-none ui-sortable" style></ul>
         </div>
       </section>
+      
       <section id="weather-container" class="col-12 col-xl-8 p-3 d-none">
         <article id="today-container" class="row border border-dark rounded p-3 bg-white"></article>
         <article id="five-day-container" class="border border-dark rounded p-3 mt-3 bg-white scrolling-wrapper">
-            <!-- Dynamically add 5 day forecast data -->
+            
           
         </article>
       </section>
+        </main>
+    
+      <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- JQuery UI -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <!-- JQuery UI Touch Punch -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+    <!-- Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Moment.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+    
     <script src="assets/js/homepage.js"></script>
 </body>
 </html>
